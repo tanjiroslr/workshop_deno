@@ -1,0 +1,181 @@
+name: Automated tests part 1
+
+on: [push, pull_request]
+
+jobs:
+  ex1:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: deno run ./part1/helloWorld.ts > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex1.ts ./tmp
+  
+  ex2:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: |
+          cat ./.github/.tests/part1/ex2ToCopy.ts >> ./part1/missionData.ts
+          deno run ./part1/missionData.ts > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex2.ts ./tmp
+
+  ex3:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: |
+          cat ./.github/.tests/part1/ex3ToCopy.ts >> ./part1/sayHello.ts
+          deno run ./part1/sayHello.ts > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex3.ts ./tmp
+
+  ex4:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: deno run ./.github/.tests/part1/ex4ToDo.ts > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex4.ts ./tmp
+
+  ex5:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex5.ts ./tmp
+
+  ex6:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: deno run ./.github/.tests/part1/ex6ToDo.ts > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex6.ts ./tmp
+
+  ex7:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: deno run ./.github/.tests/part1/ex7ToDo.ts > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex7.ts ./tmp
+
+  ex8:
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        deno: ["v1.6.3"]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno ${{matrix.deno}}
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{matrix.deno}}
+
+      - name: Run program
+        run: deno run ./.github/.tests/part1/ex8ToDo.ts | cat -e > ./tmp
+
+      - name: Run test
+        run: deno run --allow-read ./.github/.tests/part1/ex8.ts ./tmp
