@@ -1,4 +1,4 @@
-export function sayHello(name): void {
+export function sayHello(name?: string): void {
   if (name) {
     console.log("Hello " + name);
   } else {
