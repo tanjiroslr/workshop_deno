@@ -1,5 +1,5 @@
-export function sayHello(name?: string): void {
-  if (!name) {
+export function sayHello(name): void {
+  if (name) {
     console.log("Hello " + name);
   } else {
     console.log("Hello world");
